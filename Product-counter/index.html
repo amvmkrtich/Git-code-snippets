@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Counter</title>
+
+</head>
+<body>
+<div class="quantity-box">
+    <button type="button" class="quantity-box__tool quantity-box__tool-minus">-</button>
+    <input type="number" value="1">
+    <button type="button" class="quantity-box__tool quantity-box__tool-plus">+</button>
+</div>
+
+<script>
+    function quantityBox(){
+        const quantityBoxes = document.querySelectorAll('.quantity-box');
+        quantityBoxes.forEach(quantityBox => {
+            quantityBox.addEventListener('click', function (e) {
+                const input = this.querySelector('input');
+                let inputValue = +input.value;
+                if(e.target.closest('.quantity-box__tool-plus')) {
+                    input.value = '' + (inputValue >= 1 ? ++inputValue : 1);
+                }
+                if(e.target.closest('.quantity-box__tool-minus')) {
+                    input.value = '' + (inputValue > 1 ? --inputValue : 1);
+                }
+            });
+            quantityBox.querySelector('input').addEventListener('input', (e) => {
+                if(!e.target.value || e.target.value < 1) e.target.value = 1;
+            } );
+        });
+    }
+    quantityBox();
+</script>
+</body>
+</html>

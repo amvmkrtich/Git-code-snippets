@@ -1,0 +1,27 @@
+.quantity-box{
+  border-radius: var(--radius);
+  display: inline-flex;
+  align-items: center;
+  border: var(--border);
+  font-size: 16px;
+  padding-inline: 5px;
+  input{
+    min-width: 0;
+    border: none;
+    font-weight: 400;
+    @include size(63px, 45px);
+    text-align: center;
+    font-size: 1em;
+    margin: 0;
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+    &[type=number] {
+      -moz-appearance: textfield;
+    }
+  }
+  &__tool{
+    font-size: 1em;
+  }
+}
