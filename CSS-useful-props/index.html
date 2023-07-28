@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Useful Properties</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600&display=swap');
+    body{
+      font-family: Raleway;
+      font-size: 18px;
+      font-weight: 300;
+    }
+    .wrapper{
+      max-width: 1140px;
+      margin: 30px auto;
+    }
+    h1{
+      text-align: center;
+    }
+    .props-list{
+      counter-reset: prop-incr;
+    }
+    .props-list .prop{
+      display: block;
+      padding: 20px;
+      padding-left: 30px;
+      box-shadow: 0 0 14px -2px rgba(0, 0, 0, 0.25);
+      margin-bottom: 5px;
+      border-radius: 8px;
+      counter-increment: prop-incr;
+      position: relative;
+      transition: all .4s;
+      text-decoration: none;
+      color: inherit;
+    }
+    .prop__name{
+      font-weight: 400;
+      margin-bottom: 5px;
+      cursor: auto;
+      -webkit-user-select: text;
+      -moz-select: all;
+      -ms-select: all;
+      user-select: all;
+    }
+    .prop:hover{
+      background-color: #b0fcb0;
+    }
+    .prop:before{
+      content: counter(prop-incr)'.';
+      position: absolute;
+      left: .7em;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper" id="root">
+    <h1>New Useful CSS Properties</h1>
+    <div class="props-list"></div>
+  </div>
+
+  <script>
+    const propsListDiv = document.querySelector('.props-list');
+    propsListDivHTML = '';
+    const propsList = [
+      {name: 'aspect-ratio', desc: 'Nkarneri heighty proportional talu shat harmar exanak', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS/aspect-ratio'},
+      {name: 'gap ', desc: 'Lorem ipsum'},
+      {name: 'CSS Shapes', desc: ''},
+      {name: 'backdrop-filter', desc: 'Lorem ipsum', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS/backdrop-filter'},
+      {name: 'conic-gradient()', desc: 'Lorem ipsum', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/conic-gradient'},
+      {name: 'accent-color', desc: 'Inputnerin custom guin talu hamar', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS/accent-color'},
+      {name: 'scroll-snap', desc: 'Inputnerin custom guin talu hamar', url: 'https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-snap-type'},
+    ];
+
+
+    propsListDivHTML = propsList.map(p => {
+      return `<a href='${p.url}' class="prop" target="_blank">
+            <div class="prop__name">${p.name}</div>
+            <div class="prop__desc">${p.desc}</div>
+      </a>`
+    });
+
+    propsListDiv.innerHTML = propsListDivHTML;
+  </script>
+</body>
+</html>
